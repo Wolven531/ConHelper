@@ -1,19 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ConHelper
 {
+	class Display
+	{
+		public static void ShowOptions(IEnumerable<string> options)
+		{
+			var optionDisplay = 1;
+			var originalForeground = Console.ForegroundColor;
+			foreach (var option in options)
+			{
+				Console.ForegroundColor = ConsoleColor.Cyan;
+				Console.Write($"{optionDisplay}.) ");
+				Console.ForegroundColor = originalForeground;
+				Console.WriteLine(option);
+				optionDisplay++;
+			}
+		}
+	}
+	
 	class Program
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Before 1...");
-			Console.WriteLine("Before 2...");
-			Console.BackgroundColor = ConsoleColor.DarkCyan;
-			Console.ForegroundColor = ConsoleColor.White;
 			Console.WriteLine("Hello World!");
-			Console.ResetColor();
-			Console.WriteLine("After 1...");
-			Console.WriteLine("After 2...");
+			Display.ShowOptions(new[] { "option a", "option b", "option c" });
+			Console.WriteLine("Goodbye!");
 		}
 	}
 }
