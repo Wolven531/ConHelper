@@ -7,8 +7,11 @@ namespace ConHelper
 		static void Main(string[] args)
 		{
 			Console.WriteLine("Hello World!");
+
 			Display.ShowOptions(new[] { "option a", "option b", "option c" });
-			Console.WriteLine("Goodbye!");
+			var age = Ask.ForInt("How old are you?");
+
+			Console.WriteLine($"Goodbye {age} year old!");
 		}
 	}
 }
