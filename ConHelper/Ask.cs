@@ -26,5 +26,25 @@ namespace ConHelper
 
 			return userNumber;
 		}
+
+		public static string ForString(string message, bool displayTypeHint = false, int minLength = 0)
+		{
+			var userInput = string.Empty;
+			var wasAtLeastMinLength = false;
+
+			if (displayTypeHint)
+			{
+				message = $"{message} (string of length {minLength} or greater)";
+			}
+
+			while (!wasAtLeastMinLength)
+			{
+				Console.WriteLine(message);
+				userInput = Console.ReadLine();
+				wasAtLeastMinLength = userInput.Length >= minLength;
+			}
+
+			return userInput;
+		}
 	}
 }
